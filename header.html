@@ -1,0 +1,242 @@
+<header>
+  <nav class="navbar navbar-expand-lg bg-light py-2">
+    <div class="container">
+      <!-- Left Offcanvas Toggle (Hamburger) -->
+      <button
+        class="btn btn-outline-secondary d-lg-none me-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasLeft"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Brand -->
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="GreenNest" />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#">About Us</a></li> -->
+          <li class="nav-item">
+            <a class="nav-link active" href="products.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="#"
+              onclick="window.location.href='blog.html?id=1'"
+              >Blog</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Icons (Always Visible) -->
+      <div class="d-flex align-items-center gap-2">
+        <!-- <button class="icon-btn"><i class="bi bi-search"></i></button> -->
+        <button
+          class="icon-btn"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasSearch"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+        <button class="icon-btn" onclick="window.location.href='wishlist.html'">
+          <i class="bi bi-heart"></i>
+          <span class="icon-badge" id="wishlistCount">0</span>
+        </button>
+        <button
+          class="icon-btn"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasCart"
+        >
+          <i class="bi bi-cart3"></i>
+          <span class="icon-badge" id="cartCount">0</span>
+        </button>
+        <!-- <button
+          class="icon-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#userModal"
+        >
+          <i class="bi bi-person"></i>
+        </button> -->
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Left Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft">
+  <div class="offcanvas-header">
+    <!-- <h5>Menu</h5> -->
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.png" alt="GreenNest" />
+    </a>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-unstyled header-nav-menu-mobile">
+      <li>
+        <a href="index.html" class="d-block mb-2"
+          ><span><img src="./images/home-icon.png" alt="" /></span> Home</a
+        >
+      </li>
+      <li>
+        <a href="products.html" class="d-block mb-2"
+          ><span><img src="./images/shop-icon.png" alt="" /></span> Shop</a
+        >
+      </li>
+      <li>
+        <a href="cart.html" class="d-block mb-2"
+          ><span><img src="./images/cart-icon.png" alt="" /></span> Cart</a
+        >
+      </li>
+      <li>
+        <a href="blog.html" class="d-block mb-2"
+          ><span><img src="./images/blog-icon.png" alt="" /></span> Blog</a
+        >
+      </li>
+      <li>
+        <a href="contact.html" class="d-block mb-2"
+          ><span><img src="./images/contact-icon.png" alt="" /></span>
+          Contact</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Wishlist Offcanvas (Right) -->
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasSearch">
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <div class="search-heading">
+          <h3 class="text-center mb-4">What are you looking for?</h3>
+        </div>
+        <div class="search-box-block">
+          <div class="search-box">
+            <form id="searchForm">
+              <input
+                class="form-control"
+                placeholder="Search Products..."
+                type="text"
+                id="searchInput"
+                value=""
+              /><button type="submit" class="search-icon">
+                <i class="bi bi-search fs-5"></i>
+              </button>
+            </form>
+          </div>
+          <!-- <div class="not-found-product">
+            <p><span></span> is not available here</p>
+          </div> -->
+          <div id="autocompleteBox" class="autocomplete-list-block">
+            <ul class="autocomplete-list" id="autocompleteList"></ul>
+            <p id="notFound"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart Offcanvas (Right) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart">
+  <div class="offcanvas-header">
+    <h4>Cart</h4>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+    ></button>
+  </div>
+  <div class="offcanvas-body" id="cartItemsOffcanvas">
+    <ul class="cart-list-offCanvas" id="cartListOffcanvas"></ul>
+    <div class="mt-auto mb-2 cart-btn-group" id="cartBtnGroup">
+      <button
+        class="btn-theme w-100 mb-2 border-0"
+        id="goToCartBtn"
+        onclick="window.location.href='cart.html'"
+      >
+        Go To Cart
+      </button>
+      <button
+        class="btn-theme w-100 mb-2 border-0"
+        id="proceedToCheckoutBtn"
+        onclick="window.location.href='checkout.html'"
+      >
+        Proceed to Checkout
+      </button>
+    </div>
+  </div>
+</div>
+<template id="cartOffCanvasTemplate">
+  <li class="offcan-cart-item">
+    <img src="" alt="" class="cart-item-image" />
+    <div class="cart-item-details">
+      <h5 class="cart-item-title"></h5>
+      <p class="cart-item-price">
+        Price of 1 : $<span
+          class="cart-item-price-value"
+          id="cartItemPriceValue"
+        ></span>
+      </p>
+      <p>
+        Quantity :
+        <span class="cart-item-quantity" id="cartItemQuantity"></span>
+      </p>
+    </div>
+    <span id="btn-remove" class="btnRemove"
+      ><i class="bi bi-x-circle-fill"></i
+    ></span>
+  </li>
+</template>
+
+<!-- User Modal -->
+<div class="modal fade" id="userModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>User Login</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control mb-3" placeholder="Username" />
+        <input
+          type="password"
+          class="form-control mb-3"
+          placeholder="Password"
+        />
+        <button class="btn btn-success w-100">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "heading": "From Soil to Soul",
+    "subheading": "Discover the art of gardening that nurtures both plants and people.",
+    "content": "Gardening is more than just planting seeds—it’s about cultivating life. A well-tended garden not only beautifies your surroundings but also nourishes the soul. The process of caring for plants teaches patience, mindfulness, and responsibility. With each bloom and harvest, you create a sanctuary of peace in your backyard. Gardening becomes a journey of growth for both you and your plants.\n With each bloom and harvest, you create a sanctuary of peace in your backyard. Gardening becomes a journey of growth for both you and your plants.",
+    "excerpt": "Gardening is more than just planting seeds—it’s about cultivating life. A well-tended garden not only beautifies your surroundings but also nourishes the soul.",
+    "date": "2025-08-10",
+    "image": "images/blog1.jpg",
+    "imageBig": "images/blog1-big.jpg"
+  },
+  {
+    "id": 2,
+    "heading": "The Green Journal",
+    "subheading": "Tips and tricks to keep your garden lush all year round.",
+    "content": "Every season brings new opportunities for gardeners to learn and grow. From preparing the soil in spring to protecting plants during winter, each step is vital. A journal of gardening activities helps track progress and identify patterns over time. Recording challenges and successes makes it easier to adapt strategies for healthier plants. With the right knowledge, your garden can thrive through every season.\n Every season brings new opportunities for gardeners to learn and grow. From preparing the soil in spring to protecting plants during winter, each step is vital.",
+    "excerpt": "Every season brings new opportunities for gardeners to learn and grow. From preparing the soil in spring to protecting plants during winter, each step is vital.",
+    "date": "2025-08-12",
+    "image": "images/blog2.jpg",
+    "imageBig": "images/blog2-big.jpg"
+  },
+  {
+    "id": 3,
+    "heading": "Bloom & Beyond",
+    "subheading": "Inspiration to transform your garden into a vibrant paradise.",
+    "content": "Flowers are the heart of any garden, adding color, fragrance, and charm. Choosing the right plants for your climate ensures long-lasting blooms. Adding a mix of perennials and annuals creates year-round beauty. Complementing flowers with shrubs and herbs adds variety and functionality. A well-planned garden becomes not just a space, but a masterpiece of nature.\n With each bloom and harvest, you create a sanctuary of peace in your backyard. Gardening becomes a journey of growth for both you and your plants.",
+    "excerpt": "Flowers are the heart of any garden, adding color, fragrance, and charm. Choosing the right plants for your climate ensures long-lasting blooms.",
+    "date": "2025-08-15",
+    "image": "images/blog3.jpg",
+    "imageBig": "images/blog3-big.jpg"
+  },
+  {
+    "id": 4,
+    "heading": "Garden Wisdom",
+    "subheading": "Practical advice for beginners and seasoned gardeners alike.",
+    "content": "Gardening success depends on understanding your soil, climate, and plants. Healthy soil enriched with compost is the foundation of growth. Regular watering, weeding, and pruning keep plants strong and resilient. Companion planting can naturally protect crops from pests. With consistent care, every gardener can create a flourishing green space at home.\n Healthy soil enriched with compost is the foundation of growth.",
+    "excerpt": "Gardening success depends on understanding your soil, climate, and plants. Healthy soil enriched with compost is the foundation of growth.",
+    "date": "2025-08-18",
+    "image": "images/blog4.jpg",
+    "imageBig": "images/blog4-big.jpg"
+  },
+  {
+    "id": 5,
+    "heading": "Seeds of Change",
+    "subheading": "How small steps in gardening lead to big transformations.",
+    "content": "Planting seeds is one of the most rewarding parts of gardening. Each tiny seed carries the potential to become something beautiful and nourishing. With the right care, sunlight, and water, these seeds transform into thriving plants. The journey from seed to bloom reminds us that growth takes time and patience. Every garden is proof that small beginnings can lead to great rewards.\n With each seed planted, you contribute to a cycle of life and renewal in your garden.",
+    "excerpt": "Planting seeds is one of the most rewarding parts of gardening. Each tiny seed carries the potential to become something beautiful and nourishing.",
+    "date": "2025-08-20",
+    "image": "images/blog5.jpg",
+    "imageBig": "images/blog5-big.jpg"
+  },
+  {
+    "id": 6,
+    "heading": "Eco-Friendly Gardening",
+    "subheading": "Sustainable practices to keep your garden and the planet healthy.",
+    "content": "Sustainable gardening focuses on protecting the environment while growing healthy plants. Composting reduces waste and enriches soil naturally. Using rainwater harvesting helps conserve water during dry months. Organic pest control minimizes harmful chemicals and supports biodiversity. With eco-friendly choices, your garden thrives in harmony with nature and contributes to a greener planet.\n Organic pest control minimizes harmful chemicals and supports biodiversity. With eco-friendly choices, your garden thrives in harmony with nature and contributes to a greener planet.",
+    "excerpt": "Sustainable gardening focuses on protecting the environment while growing healthy plants. Composting reduces waste and enriches soil naturally.",
+    "date": "2025-08-22",
+    "image": "images/blog6.jpg",
+    "imageBig": "images/blog6-big.jpg"
+  }
+]

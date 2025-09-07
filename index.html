@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="images/favicon.png" type="image/png" />
+    <!-- Bootstrap CSS (v5.x CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <!-- Owl Carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/owl.carousel/dist/assets/owl.theme.default.min.css"
+    />
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenNest</title>
+  </head>
+  <body>
+    <div id="preloader">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <section id="header-placeholder"></section>
+
+    <section class="banner-section">
+      <div class="owl-carousel owl-theme" id="banner-slide">
+        <!-- Banner 1 -->
+        <div
+          class="banner-item"
+          style="background-image: url('./images/slider/banner-1.jpg')"
+        >
+          <div class="container">
+            <div class="row align-items-center">
+              <!-- Left Content -->
+              <div
+                class="col-md-6 banner-content wow fadeInLeft"
+                data-wow-delay="0.3s"
+              >
+                <h4 class="sec-subtitle">
+                  <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                  Welcome to GreenNest
+                </h4>
+                <h2
+                  class="sec-title text-white wow animate__animated animate__fadeInDown"
+                >
+                  Grow Your Dream Garden with the Right Tools
+                </h2>
+                <p
+                  class="banner-description wow animate__animated animate__fadeInUp"
+                >
+                  Shop premium gardening equipment, eco-friendly tools, and
+                  plant care essentials — everything you need for a lush,
+                  thriving garden.
+                </p>
+                <a href="products.html" class="btn-theme">Shop Now</a>
+              </div>
+              <!-- Right Image -->
+              <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
+                <div class="banner-image banner-image-1">
+                  <img
+                    src="images/slider/banner-1-inner.png"
+                    alt="Banner Image 1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner 2 -->
+        <div
+          class="banner-item"
+          style="background-image: url('./images/slider/banner-2.jpg')"
+        >
+          <div class="container">
+            <div class="row align-items-center">
+              <div
+                class="col-md-6 banner-content wow fadeInLeft"
+                data-wow-delay="0.3s"
+              >
+                <h4 class="sec-subtitle">
+                  <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                  Welcome to GreenNest
+                </h4>
+                <h2
+                  class="sec-title text-white wow animate__animated animate__fadeInDown"
+                >
+                  Nurture Nature with Quality Gardening Gear
+                </h2>
+                <p
+                  class="banner-description wow animate__animated animate__fadeInUp"
+                >
+                  Shop premium gardening equipment, eco-friendly tools, and
+                  plant care essentials — everything you need for a lush,
+                  thriving garden.
+                </p>
+                <a href="products.html" class="btn-theme">Explore Now</a>
+              </div>
+              <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
+                <div class="banner-image">
+                  <img
+                    src="images/slider/banner-3-inner.png"
+                    alt="Banner Image 2"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banner 3 -->
+        <div
+          class="banner-item"
+          style="background-image: url('./images/slider/banner-3.jpg')"
+        >
+          <div class="container">
+            <div class="row align-items-center">
+              <div
+                class="col-md-6 banner-content wow fadeInLeft"
+                data-wow-delay="0.3s"
+              >
+                <h4 class="sec-subtitle">
+                  <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                  Welcome to GreenNest
+                </h4>
+                <h2
+                  class="sec-title text-white wow animate__animated animate__fadeInDown"
+                >
+                  Turn Your Outdoor Space into a Blooming Oasis
+                </h2>
+                <p
+                  class="banner-description wow animate__animated animate__fadeInUp"
+                >
+                  Shop premium gardening equipment, eco-friendly tools, and
+                  plant care essentials — everything you need for a lush,
+                  thriving garden.
+                </p>
+                <a
+                  href="products.html"
+                  class="btn-theme"
+                  onclick="window.location.href='products.html'"
+                  >Order Now</a
+                >
+              </div>
+              <div class="col-md-6 wow fadeInRight" data-wow-delay="0.6s">
+                <div class="banner-image">
+                  <img
+                    src="images/slider/banner-2-inner.png"
+                    alt="Banner Image 3"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-sec section-padding">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h4 class="sec-subtitle">
+            <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+            Explore Our Categories
+          </h4>
+          <h2 class="sec-title wow animate__animated animate__fadeInDown">
+            Shop By Garden Essentials
+          </h2>
+        </div>
+
+        <div class="row">
+          <div
+            class="owl-carousel owl-theme wow animate__animated animate__fadeInUp"
+            id="category-list"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Template for Category -->
+    <template id="category-template">
+      <div class="item">
+        <div class="categoryCardBlock">
+          <div class="categoryImage">
+            <img src="" alt="" class="categoryImg img-fluid" />
+          </div>
+          <div class="categoryInfo">
+            <h3 class="categoryTitle"></h3>
+            <p class="categoryCount"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <section class="about-sec section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="about-img-block">
+              <div class="about-img-1-block">
+                <img src="images/about-img-1.png" alt="" class="about-img-1" />
+              </div>
+              <div class="about-img-2-block">
+                <img src="images/about-img-2.png" alt="" class="about-img-2" />
+              </div>
+              <div class="about-img-txt">
+                <h4>20k+</h4>
+                <h5>Happy Clients</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="about-content">
+              <div class="section-heading">
+                <h4 class="sec-subtitle">
+                  <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                  Gardening Solutions
+                </h4>
+                <h2 class="sec-title">
+                  Turn Your Backyard into a Green Paradise
+                </h2>
+              </div>
+              <p>
+                Transform your outdoor space into a lush, vibrant retreat filled
+                with blooming flowers and healthy plants. With the right tools,
+                planters, and accessories, gardening becomes a joyful and
+                rewarding hobby. Create a sanctuary where you can relax, breathe
+                fresh air, and connect with nature.
+              </p>
+
+              <div class="about-list-block">
+                <ul>
+                  <li class="about-list">
+                    <div class="list-img">
+                      <img src="images/basket.png" alt="GreenNest" />
+                    </div>
+                    <div class="list-content">
+                      <h4 class="page-subHeading subHeading-primary">
+                        Garden Accessories & Supplies
+                      </h4>
+                      <p>
+                        Discover stylish, durable, and functional accessories to
+                        make gardening easier and more enjoyable.
+                      </p>
+                    </div>
+                  </li>
+
+                  <li class="about-list">
+                    <div class="list-img">
+                      <img src="images/eco-services.png" alt="GreenNest" />
+                    </div>
+                    <div class="list-content">
+                      <h4 class="page-subHeading subHeading-primary">
+                        Garden Accessories & Supplies
+                      </h4>
+                      <p>
+                        Discover stylish, durable, and functional accessories to
+                        make gardening easier and more enjoyable.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="block-button">
+                <a href="products.html" class="btn-theme">Order Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-best-product section-padding">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <div class="section-heading">
+              <h4 class="sec-subtitle">
+                <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                Best Sellers
+              </h4>
+              <h2 class="sec-title">Our Most-Loved Gardening Essentials</h2>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="button-right-block">
+              <a
+                href="#"
+                class="btn-theme"
+                onclick="window.location.href='products.html'"
+                >All Products</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="owl-carousel owl-theme" id="bestSellerContainer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer-section section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="offer-content-block">
+              <div class="section-heading">
+                <h2 class="sec-title text-white">
+                  This Week’s Garden Specials !
+                </h2>
+              </div>
+              <div class="offer-content">
+                <p class="offer-text">
+                  <span class="pe-2"
+                    ><img src="images/offer-icon.png" alt="Offer Icon" /></span
+                  >Get <span class="offer-discount">20%</span> off on Pots &
+                  Planters!
+                </p>
+                <p class="offer-text">
+                  <span class="pe-2"
+                    ><img src="images/offer-icon.png" alt="Offer Icon" /></span
+                  >Get <span class="offer-discount">20%</span> off Garden Tools!
+                </p>
+                <p class="offer-text">
+                  <span class="pe-2"
+                    ><img src="images/offer-icon.png" alt="Offer Icon" /></span
+                  >Flat <span class="offer-discount">30%</span> off on Garden
+                  Cart purchase!
+                </p>
+                <a href="products.html" class="btn-theme">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--------Start Product Template Section----------------->
+
+    <section class="section-product section-padding">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <div class="section-heading">
+              <h4 class="sec-subtitle">
+                <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                New Arrivals
+              </h4>
+              <h2 class="sec-title">
+                Fresh New Finds for Your Beautiful Garden
+              </h2>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="button-right-block">
+              <a
+                href="#"
+                class="btn-theme"
+                onclick="window.location.href='products.html'"
+                >All Products</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="owl-carousel owl-theme" id="newArrivalContainer"></div>
+        </div>
+      </div>
+    </section>
+
+    <template id="productTemplate">
+      <div class="item" id="productValue">
+        <div class="productCardBlock text-center" id="productCardBlock">
+          <div class="productImage">
+            <img src="" alt="" class="productImg img-fluid" id="product-img" />
+            <div class="productOverlayIcons">
+              <span class="wish-icon" id="addWishList"
+                ><i class="bi bi-heart"></i
+              ></span>
+              <span class="view-icon" id="viewProduct"
+                ><i class="bi bi-eye"></i
+              ></span>
+            </div>
+          </div>
+          <div class="productInfo">
+            <h3 class="productTitle page-subHeading"></h3>
+            <div class="productPriceBlock">
+              <div class="priceBlock-2">
+                <p class="productPrice"></p>
+                <p class="ActualProductPrice"></p>
+              </div>
+
+              <h5 class="rating py-3">⭐ 4.5</h5>
+            </div>
+            <button class="btn-theme border-0" type="button" id="addToCartBtn">
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <section class="testimonial-section">
+      <!-- <div class="testimonial-img-block">
+        <img src="./images/testimonial-img-1.png" alt="Testimonial" />
+      </div> -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="testimonial-img-block">
+              <img src="./images/testimonial-img-1.png" alt="Testimonial" />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="testimonial-block">
+              <div class="section-heading">
+                <h4 class="sec-subtitle">
+                  <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+                  Real Stories
+                </h4>
+                <h2 class="sec-title">
+                  Your trust helps us grow — our gardening family thinks.
+                </h2>
+              </div>
+              <div class="owl-carousel owl-theme" id="testimonyContainer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <template id="testimonialsTemplate">
+      <div class="item testimonial-content" id="testimonialContent">
+        <p class="testimonials-text" id="testimonialText"></p>
+        <div class="testi-author-arrow">
+          <div class="author-img">
+            <img src="" alt="Author" class="authorImage" />
+          </div>
+          <div class="author-info">
+            <h5 class="author-name" id="authorName"></h5>
+            <p class="author-occupation" id="authorOccupation"></p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <section class="blog-section section-padding" id="blogSection">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h4 class="sec-subtitle">
+            <span><img src="./images/leaf 1.png" alt="Leaf Icon" /></span>
+            The Green Journal
+          </h4>
+          <h2 class="sec-title">Discover expert gardening tips & ideas</h2>
+        </div>
+        <div class="row" id="blogPostsBlock"></div>
+      </div>
+    </section>
+
+    <template id="blogTemplate">
+      <div class="col-lg-4">
+        <div class="blog-card">
+          <div class="blog-image">
+            <img
+              src="./images/blog-img-1.jpg"
+              alt="Blog"
+              class="img-fluid"
+              id="blogImage"
+            />
+            <div class="blog-date"></div>
+          </div>
+          <div class="blog-content">
+            <h5 class="blog-title">5 Tips for a Thriving Garden</h5>
+            <p class="blog-excerpt">
+              Discover essential tips to help your garden flourish this season.
+            </p>
+            <a href="#" class="blog-link-text" id="blogLink"
+              >Read More
+              <span class="blog-icon-right"
+                ><i class="fa-solid fa-arrow-right"></i></span
+            ></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="wishToast"
+        class="toast align-items-center border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div id="wishToastBody" class="toast-body">
+            <!-- Message will be inserted dynamically -->
+          </div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div
+        id="cartToast"
+        class="toast align-items-center border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div id="cartToastBody" class="toast-body">
+            <!-- Message will be inserted dynamically -->
+          </div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <!-- Bootstrap JS (with Popper) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script type="module" src="src/main.js"></script>
+    <script type="module" src="common.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#banner-slide").owlCarousel({
+          items: 1,
+          loop: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          autoplayHoverPause: true,
+          dots: true,
+          animateOut: "fadeOut",
+        });
+
+        new WOW().init();
+      });
+    </script>
+  </body>
+</html>

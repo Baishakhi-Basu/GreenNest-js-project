@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Pots and Planters",
+    "image": "images/categories/pots-planters.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Ecoflow Watering Can",
+    "image": "images/categories/watering-can.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Garden Carts",
+    "image": "images/categories/garden-carts.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Planter Box",
+    "image": "images/categories/planter-box.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Garden Tools",
+    "image": "images/categories/garden-tools.jpg"
+  }
+]
