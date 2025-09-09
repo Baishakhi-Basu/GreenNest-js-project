@@ -23,7 +23,9 @@ export async function loadProducts() {
     // Default "All" option
     const allClone = productCategoryTemplate.content.cloneNode(true);
     allClone.querySelector("input[type='radio']").value = "All";
-    allClone.querySelector("input").checked = true;
+    if (inputCategory === null) {
+      allClone.querySelector("input").checked = true;
+    }
     allClone.querySelector(
       "#pro-category-name"
     ).textContent = `All (${products.length})`;
@@ -34,6 +36,11 @@ export async function loadProducts() {
       const clone = productCategoryTemplate.content.cloneNode(true);
       clone.querySelector("input[type='radio']").value = category;
       clone.querySelector("#pro-category-name").textContent = `${category} `;
+      
+      // Check the radio button if it matches the URL parameter
+      if (inputCategory === category) {
+        clone.querySelector("input[type='radio']").checked = true;
+      }
 
       clone.querySelector(
         "#pro-category-qty"

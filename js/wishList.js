@@ -1,7 +1,8 @@
-import { updateWishlistCount } from "../common";
+import { updateWishlistCount, updateCartCount } from "../common";
 
 function renderWish() {
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const wishlistTableBody = document.getElementById("wishlistTableBody");
   const wishlistTemplate = document.getElementById("wishlistRowTemplate");
@@ -24,7 +25,21 @@ function renderWish() {
       "#wishlistStock"
     ).textContent = `In stock (${wishItem.stock})`;
 
-    clone.querySelector("#wishlistAddToCart").addEventListener("click", () => {
+    // Check if item is already in cart and update UI accordingly
+    const cartButton = clone.querySelector("#wishlistAddToCart");
+    const isInCart = cart.some(cartItem => cartItem.id === wishItem.id);
+    
+    if (isInCart) {
+      cartButton.innerHTML = `<span><i class="bi bi-cart-fill"></i></span> Added in Cart`;
+      cartButton.style.color = "#ffc107";
+      cartButton.style.fontWeight = "600";
+    } else {
+      cartButton.innerHTML = `<span><i class="bi bi-cart3"></i></span> Add To Cart`;
+      cartButton.style.color = "";
+      cartButton.style.fontWeight = "";
+    }
+
+    cartButton.addEventListener("click", () => {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
       //   console.log("wishing...");
@@ -55,6 +70,15 @@ function renderWish() {
       }
 
       localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      
+      // Update the button appearance after adding to cart
+      if (existingCartItem === -1) {
+        cartButton.innerHTML = `<span><i class="bi bi-cart-fill"></i></span> Added in Cart`;
+        cartButton.style.color = "#ffc107";
+        cartButton.style.fontWeight = "600";
+      }
+      
       const toastEl = document.getElementById("cartToast");
       toastEl.className = `toast align-items-center border-0 ${toastClass}`;
       document.getElementById("cartToastBody").textContent = toastMessage;
