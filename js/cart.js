@@ -1,5 +1,17 @@
-import products from "../api/available-products.json";
 import { updateCartCount } from "../common.js";
+
+// Load products data
+let products = [];
+
+async function loadProductsData() {
+  try {
+    const response = await fetch("api/available-products.json");
+    products = await response.json();
+    renderCart();
+  } catch (error) {
+    console.error("Error loading product data:", error);
+  }
+}
 
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem("cart"));
@@ -112,4 +124,5 @@ export function removeCartItem(id) {
   renderCart();
 }
 
-renderCart();
+// Initialize cart when DOM is loaded
+document.addEventListener('DOMContentLoaded', loadProductsData);
