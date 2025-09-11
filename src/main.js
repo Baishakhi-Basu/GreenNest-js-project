@@ -1,8 +1,8 @@
-import "./style.css";
-import { renderProducts } from "../js/renderAllProducts";
-import { loadCategories } from "../js/load-categories";
-import { renderTestimonials } from "../js/renderTestimonials";
-import { renderBlogPosts } from "../js/renderBlogPosts";
+// import "./style.css";
+import { renderProducts } from "../js/renderAllProducts.js";
+import { loadCategories } from "../js/load-categories.js";
+import { renderTestimonials } from "../js/renderTestimonials.js";
+import { renderBlogPosts } from "../js/renderBlogPosts.js";
 
 // Initialize all components when DOM is loaded
 document.addEventListener("DOMContentLoaded", async () => {
