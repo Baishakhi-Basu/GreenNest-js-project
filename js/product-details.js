@@ -1,16 +1,32 @@
-import products from "../api/available-products.json";
 import { updateCartCount, updateWishlistCount } from "../common.js";
 import { renderProducts } from "./renderAllProducts.js";
 
-// Get product ID from URL
-const params = new URLSearchParams(window.location.search);
+// Load products data
+let products = [];
+let product = null;
 
-const productId = parseInt(params.get("id"));
+async function loadProductData() {
+  try {
+    const response = await fetch("api/available-products.json");
+    products = await response.json();
+    
+    // Get product ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = parseInt(params.get("id"));
+    
+    product = products.find((product) => product.id === productId);
+    
+    if (product) {
+      initializeProductDetails();
+      initializeEventListeners();
+    }
+  } catch (error) {
+    console.error("Error loading product data:", error);
+  }
+}
 
-const product = products.find((product) => product.id === productId);
-
-// Populate product details
-if (product) {
+function initializeProductDetails() {
+  // Populate product details
   document.getElementById("productImage").src = product.image;
   document.getElementById("productImage").alt = product.name;
   document.getElementById("productName").textContent = product.name;
@@ -42,39 +58,95 @@ if (product) {
   } else {
     actualProductPrice.textContent = "";
   }
+  
+  // Initialize wishlist UI
+  updateWishlistUI();
+  
+  // Render related products
+  renderProducts(
+    "relatedProductContainer",
+    (prod) => prod.category === product.category
+  );
 }
 
-// Quantity control
-
+// Global variables for quantity control
 let quantity = 1;
-let totalSelectedProductPrice = product.price;
-const quantityInput = document.getElementById("productQty");
-const increaseBtn = document.getElementById("increaseQty");
-const decreaseBtn = document.getElementById("decreaseQty");
+let totalSelectedProductPrice = 0;
 
-increaseBtn.addEventListener("click", () => {
-  if (quantity < product.stock) {
-    quantity++;
-    quantityInput.value = quantity;
-    totalSelectedProductPrice = quantity * product.price;
-    console.log(totalSelectedProductPrice);
-  }
-});
+function initializeEventListeners() {
+  // Initialize quantity variables
+  totalSelectedProductPrice = product.price;
+  
+  // Quantity control elements
+  const quantityInput = document.getElementById("productQty");
+  const increaseBtn = document.getElementById("increaseQty");
+  const decreaseBtn = document.getElementById("decreaseQty");
 
-decreaseBtn.addEventListener("click", () => {
-  if (quantity > 1) {
-    quantity--;
-    quantityInput.value = quantity;
-    totalSelectedProductPrice = quantity * product.price;
-    // console.log(totalSelectedProductPrice);
-  }
-});
+  increaseBtn.addEventListener("click", () => {
+    if (quantity < product.stock) {
+      quantity++;
+      quantityInput.value = quantity;
+      totalSelectedProductPrice = quantity * product.price;
+      console.log(totalSelectedProductPrice);
+    }
+  });
 
-// Add to Cart functionality
+  decreaseBtn.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity--;
+      quantityInput.value = quantity;
+      totalSelectedProductPrice = quantity * product.price;
+    }
+  });
 
-document.getElementById("addToCart").addEventListener("click", () => {
-  addToCartFn(product.id);
-});
+  // Add to Cart functionality
+  document.getElementById("addToCart").addEventListener("click", () => {
+    addToCartFn(product.id);
+  });
+
+  // Add to Wishlist functionality
+  document.getElementById("addToWishList").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const existingIndex = wishlist.findIndex((item) => item.id === product.id);
+
+    let toastMessage = "";
+    let toastClass = "";
+
+    if (existingIndex > -1) {
+      // Remove from wishlist
+      wishlist.splice(existingIndex, 1);
+      toastMessage = `💔 ${product.name} removed from wishlist!`;
+      toastClass = "text-bg-warning";
+    } else {
+      // Add to wishlist
+      wishlist.push({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        price: product.price,
+        image: product.image,
+        stock: product.stock,
+        category: product.category,
+        quantity: 1,
+      });
+      toastMessage = `❤️ ${product.name} added to wishlist!`;
+      toastClass = "text-bg-success";
+    }
+
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    updateWishlistCount();
+    updateWishlistUI();
+
+    // Show toast
+    const toastEl = document.getElementById("wishToast");
+    toastEl.className = `toast align-items-center border-0 ${toastClass}`;
+    document.getElementById("wishToastBody").textContent = toastMessage;
+    const toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  });
+}
 
 export function addToCartFn(id) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -115,16 +187,6 @@ export function addToCartFn(id) {
   toast.show();
 }
 
-// renderProducts(
-//   "relatedProductContainer",
-//   (prod) => prod.category === product.category && prod.id !== product.id
-// );
-
-renderProducts(
-  "relatedProductContainer",
-  (prod) => prod.category === product.category
-);
-
 // Wishlist functionality
 function updateWishlistUI() {
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -144,48 +206,5 @@ function updateWishlistUI() {
   }
 }
 
-// Initialize wishlist UI on page load
-updateWishlistUI();
-
-// Add to Wishlist functionality
-document.getElementById("addToWishList").addEventListener("click", (e) => {
-  e.preventDefault();
-
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const existingIndex = wishlist.findIndex((item) => item.id === product.id);
-
-  let toastMessage = "";
-  let toastClass = "";
-
-  if (existingIndex > -1) {
-    // Remove from wishlist
-    wishlist.splice(existingIndex, 1);
-    toastMessage = `💔 ${product.name} removed from wishlist!`;
-    toastClass = "text-bg-warning";
-  } else {
-    // Add to wishlist
-    wishlist.push({
-      id: product.id,
-      name: product.name,
-      description: product.description,
-      price: product.price,
-      image: product.image,
-      stock: product.stock,
-      category: product.category,
-      quantity: 1,
-    });
-    toastMessage = `❤️ ${product.name} added to wishlist!`;
-    toastClass = "text-bg-success";
-  }
-
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  updateWishlistCount();
-  updateWishlistUI();
-
-  // Show toast
-  const toastEl = document.getElementById("wishToast");
-  toastEl.className = `toast align-items-center border-0 ${toastClass}`;
-  document.getElementById("wishToastBody").textContent = toastMessage;
-  const toast = new bootstrap.Toast(toastEl);
-  toast.show();
-});
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', loadProductData);
