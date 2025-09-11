@@ -1,6 +1,6 @@
 import products from "../api/available-products.json";
-import { updateCartCount, updateWishlistCount } from "../common";
-import { renderProducts } from "./renderAllProducts";
+import { updateCartCount, updateWishlistCount } from "../common.js";
+import { renderProducts } from "./renderAllProducts.js";
 
 // Get product ID from URL
 const params = new URLSearchParams(window.location.search);
@@ -128,11 +128,11 @@ renderProducts(
 // Wishlist functionality
 function updateWishlistUI() {
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const isInWishlist = wishlist.some(item => item.id === product.id);
-  
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
+
   const wishIcon = document.querySelector(".wishIcon i");
   const wishText = document.querySelector("#addToWishList span:last-child");
-  
+
   if (isInWishlist) {
     wishIcon.className = "bi bi-heart-fill";
     wishIcon.style.color = "#e74c3c";
@@ -150,13 +150,13 @@ updateWishlistUI();
 // Add to Wishlist functionality
 document.getElementById("addToWishList").addEventListener("click", (e) => {
   e.preventDefault();
-  
+
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const existingIndex = wishlist.findIndex(item => item.id === product.id);
-  
+  const existingIndex = wishlist.findIndex((item) => item.id === product.id);
+
   let toastMessage = "";
   let toastClass = "";
-  
+
   if (existingIndex > -1) {
     // Remove from wishlist
     wishlist.splice(existingIndex, 1);
@@ -177,11 +177,11 @@ document.getElementById("addToWishList").addEventListener("click", (e) => {
     toastMessage = `❤️ ${product.name} added to wishlist!`;
     toastClass = "text-bg-success";
   }
-  
+
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
   updateWishlistCount();
   updateWishlistUI();
-  
+
   // Show toast
   const toastEl = document.getElementById("wishToast");
   toastEl.className = `toast align-items-center border-0 ${toastClass}`;

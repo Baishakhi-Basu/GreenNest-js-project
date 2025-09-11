@@ -1,4 +1,4 @@
-import { renderProducts } from "./renderAllProducts";
+import { renderProducts } from "./renderAllProducts.js";
 
 export async function loadProducts() {
   try {
@@ -36,7 +36,7 @@ export async function loadProducts() {
       const clone = productCategoryTemplate.content.cloneNode(true);
       clone.querySelector("input[type='radio']").value = category;
       clone.querySelector("#pro-category-name").textContent = `${category} `;
-      
+
       // Check the radio button if it matches the URL parameter
       if (inputCategory === category) {
         clone.querySelector("input[type='radio']").checked = true;

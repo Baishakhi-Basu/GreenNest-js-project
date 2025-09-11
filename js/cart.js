@@ -1,5 +1,5 @@
 import products from "../api/available-products.json";
-import { updateCartCount } from "../common";
+import { updateCartCount } from "../common.js";
 
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem("cart"));

@@ -1,4 +1,4 @@
-import { updateWishlistCount, updateCartCount } from "../common";
+import { updateWishlistCount, updateCartCount } from "../common.js";
 
 function renderWish() {
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -27,8 +27,8 @@ function renderWish() {
 
     // Check if item is already in cart and update UI accordingly
     const cartButton = clone.querySelector("#wishlistAddToCart");
-    const isInCart = cart.some(cartItem => cartItem.id === wishItem.id);
-    
+    const isInCart = cart.some((cartItem) => cartItem.id === wishItem.id);
+
     if (isInCart) {
       cartButton.innerHTML = `<span><i class="bi bi-cart-fill"></i></span> Added in Cart`;
       cartButton.style.color = "#ffc107";
@@ -71,14 +71,14 @@ function renderWish() {
 
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
-      
+
       // Update the button appearance after adding to cart
       if (existingCartItem === -1) {
         cartButton.innerHTML = `<span><i class="bi bi-cart-fill"></i></span> Added in Cart`;
         cartButton.style.color = "#ffc107";
         cartButton.style.fontWeight = "600";
       }
-      
+
       const toastEl = document.getElementById("cartToast");
       toastEl.className = `toast align-items-center border-0 ${toastClass}`;
       document.getElementById("cartToastBody").textContent = toastMessage;
