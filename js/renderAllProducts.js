@@ -8,7 +8,7 @@ async function loadProducts() {
   }
   return products;
 }
-import { updateCartCount, updateWishlistCount } from "../common";
+import { updateCartCount, updateWishlistCount } from "../common.js";
 // import { addToCartFn } from "./product-details";
 
 export async function renderProducts(containerId, filterfn) {
@@ -17,7 +17,7 @@ export async function renderProducts(containerId, filterfn) {
 
   // Clear old items
   container.innerHTML = "";
-  
+
   // Load products data
   const productsData = await loadProducts();
   const filteredProducts = productsData.filter(filterfn);
@@ -73,58 +73,64 @@ export async function renderProducts(containerId, filterfn) {
 
     productClone.querySelector(".rating").textContent = `⭐ ${customerRating}`;
 
-    productClone.querySelector("#viewProduct").addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = `product-details.html?id=${id}`;
-    });
+    productClone
+      .querySelector("#viewProduct")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = `product-details.html?id=${id}`;
+      });
 
-    productClone.getElementById("product-img").addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = `product-details.html?id=${id}`;
-    });
+    productClone
+      .getElementById("product-img")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = `product-details.html?id=${id}`;
+      });
 
-    productClone.querySelector("#addWishList").addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      //window.location.href = `wishList.html?id=${id}`;
+    productClone
+      .querySelector("#addWishList")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        //window.location.href = `wishList.html?id=${id}`;
 
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+        let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-      const existingWishedPro = wishlist.findIndex(
-        (wishItem) => wishItem.id === id
-      );
-      console.log("wishing...");
+        const existingWishedPro = wishlist.findIndex(
+          (wishItem) => wishItem.id === id
+        );
+        console.log("wishing...");
 
-      let toastMessage = "";
-      let toastClass = "";
+        let toastMessage = "";
+        let toastClass = "";
 
-      if (existingWishedPro > -1) {
-        toastMessage = `🔄 ${name} is already in wish list`;
-        toastClass = "text-bg-info";
-      } else {
-        toastMessage = `✅ ${name} added to the wishlist!`;
-        toastClass = "text-bg-success";
-        wishlist.push({
-          id,
-          image,
-          name,
-          stock,
-          price,
-          category,
-          description,
-          quantity: 1,
-        });
-      }
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      updateWishlistCount();
-      const toastEl = document.getElementById("wishToast");
-      toastEl.className = `toast align-items-center border-0 ${toastClass}`;
-      document.getElementById("wishToastBody").textContent = toastMessage;
-      const toast = new bootstrap.Toast(toastEl);
-      toast.show();
-    });
+        if (existingWishedPro > -1) {
+          toastMessage = `🔄 ${name} is already in wish list`;
+          toastClass = "text-bg-info";
+        } else {
+          toastMessage = `✅ ${name} added to the wishlist!`;
+          toastClass = "text-bg-success";
+          wishlist.push({
+            id,
+            image,
+            name,
+            stock,
+            price,
+            category,
+            description,
+            quantity: 1,
+          });
+        }
+        localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        updateWishlistCount();
+        const toastEl = document.getElementById("wishToast");
+        toastEl.className = `toast align-items-center border-0 ${toastClass}`;
+        document.getElementById("wishToastBody").textContent = toastMessage;
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      });
 
     productClone
       .querySelector("#addToCartBtn")
@@ -189,14 +195,14 @@ export async function renderProducts(containerId, filterfn) {
         768: { items: 3 },
         1200: { items: 4 },
       },
-      onInitialized: function() {
+      onInitialized: function () {
         // Re-attach event listeners to cloned elements
         attachProductEventListeners(containerId);
       },
-      onTranslated: function() {
+      onTranslated: function () {
         // Re-attach event listeners after carousel translation
         attachProductEventListeners(containerId);
-      }
+      },
     });
   }, 100);
 }
@@ -204,40 +210,40 @@ export async function renderProducts(containerId, filterfn) {
 // Function to attach event listeners to carousel cloned elements
 function attachProductEventListeners(containerId) {
   const container = document.getElementById(containerId);
-  
+
   // Use event delegation for better performance and to handle cloned elements
-  container.addEventListener('click', async function(e) {
+  container.addEventListener("click", async function (e) {
     e.stopPropagation();
-    
-    const productCard = e.target.closest('.item');
+
+    const productCard = e.target.closest(".item");
     if (!productCard) return;
-    
-    const productId = productCard.id.replace('product', '');
+
+    const productId = productCard.id.replace("product", "");
     if (!productId) return;
-    
+
     // Handle view product icon clicks
-    if (e.target.closest('#viewProduct')) {
+    if (e.target.closest("#viewProduct")) {
       e.preventDefault();
       window.location.href = `product-details.html?id=${productId}`;
       return;
     }
-    
+
     // Handle product image clicks
-    if (e.target.closest('#product-img')) {
+    if (e.target.closest("#product-img")) {
       e.preventDefault();
       window.location.href = `product-details.html?id=${productId}`;
       return;
     }
-    
+
     // Handle wishlist clicks
-    if (e.target.closest('#addWishList')) {
+    if (e.target.closest("#addWishList")) {
       e.preventDefault();
       await handleWishlistClick(productId);
       return;
     }
-    
+
     // Handle add to cart clicks
-    if (e.target.closest('#addToCartBtn')) {
+    if (e.target.closest("#addToCartBtn")) {
       e.preventDefault();
       await handleAddToCartClick(productId);
       return;
@@ -249,15 +255,17 @@ function attachProductEventListeners(containerId) {
 async function handleWishlistClick(productId) {
   // Find the product data
   const productsData = await loadProducts();
-  const product = productsData.find(p => p.id == productId);
+  const product = productsData.find((p) => p.id == productId);
   if (!product) return;
-  
+
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const existingWishedPro = wishlist.findIndex(wishItem => wishItem.id == productId);
-  
+  const existingWishedPro = wishlist.findIndex(
+    (wishItem) => wishItem.id == productId
+  );
+
   let toastMessage = "";
   let toastClass = "";
-  
+
   if (existingWishedPro > -1) {
     toastMessage = `🔄 ${product.name} is already in wish list`;
     toastClass = "text-bg-info";
@@ -275,10 +283,10 @@ async function handleWishlistClick(productId) {
       quantity: 1,
     });
   }
-  
+
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
   updateWishlistCount();
-  
+
   const toastEl = document.getElementById("wishToast");
   toastEl.className = `toast align-items-center border-0 ${toastClass}`;
   document.getElementById("wishToastBody").textContent = toastMessage;
@@ -290,13 +298,13 @@ async function handleWishlistClick(productId) {
 async function handleAddToCartClick(productId) {
   // Find the product data
   const productsData = await loadProducts();
-  const product = productsData.find(p => p.id == productId);
+  const product = productsData.find((p) => p.id == productId);
   if (!product) return;
-  
+
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   let toastMessage = "";
   let toastClass = "";
-  
+
   const existingId = cart.findIndex((item) => item.id == productId);
   if (existingId > -1) {
     toastMessage = `🔄 ${product.name} is already in cart`;
@@ -316,7 +324,7 @@ async function handleAddToCartClick(productId) {
     toastMessage = `✅ ${product.name} added to the cart!`;
     toastClass = "text-bg-success";
   }
-  
+
   localStorage.setItem("cart", JSON.stringify(cart));
   const toastEl = document.getElementById("cartToast");
   toastEl.className = `toast align-items-center border-0 ${toastClass}`;
