@@ -3,7 +3,7 @@ let products = [];
 
 async function loadProducts() {
   if (products.length === 0) {
-    const response = await fetch("./api/available-products.json");
+    const response = await fetch("api/available-products.json");
     products = await response.json();
   }
   return products;

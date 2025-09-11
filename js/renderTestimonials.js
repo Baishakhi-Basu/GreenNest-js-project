@@ -1,6 +1,6 @@
 export async function renderTestimonials() {
   try {
-    const response = await fetch("./api/testimonials.json");
+    const response = await fetch("api/testimonials.json");
     const testimonials = await response.json();
     console.log(testimonials);
 

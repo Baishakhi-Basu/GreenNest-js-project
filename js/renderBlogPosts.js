@@ -1,6 +1,6 @@
 export async function renderBlogPosts() {
   try {
-    const blogResponse = await fetch("./api/blog.json");
+    const blogResponse = await fetch("api/blog.json");
     const blogData = await blogResponse.json();
 
     const blogPostsBlock = document.getElementById("blogPostsBlock");

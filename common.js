@@ -50,7 +50,7 @@ fetch("footer.html")
   .then((data) => {
     document.getElementById("footer-placeholder").innerHTML = data;
 
-    fetch("./api/available-products.json")
+    fetch("api/available-products.json")
       .then((response) => response.json())
       .then((products) => {
         const footerListPopular = document.getElementById("footerListPopular");
@@ -144,7 +144,7 @@ function searchProducts() {
   let query = "";
 
   async function getProducts() {
-    const response = await fetch(`./api/available-products.json`);
+    const response = await fetch(`api/available-products.json`);
     const data = await response.json();
     return data;
   }

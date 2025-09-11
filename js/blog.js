@@ -1,6 +1,6 @@
 async function blog() {
   try {
-    const blogResponse = await fetch("../api/blog.json");
+    const blogResponse = await fetch("api/blog.json");
     const blogData = await blogResponse.json();
     // console.log(blogData);
 
