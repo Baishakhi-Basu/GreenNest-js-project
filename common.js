@@ -12,9 +12,10 @@
 //     });
 //   });
 
-import WOW from "wowjs";
+// WOW.js is loaded via CDN in HTML, so we don't need to import it here
+// The WOW initialization is handled in the HTML script tags
 
-new WOW.WOW().init();
+// Remove WOW import and initialization from here since it's handled in HTML
 
 document.addEventListener("DOMContentLoaded", () => {
   // Hide preloader after DOM is ready

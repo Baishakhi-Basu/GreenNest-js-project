@@ -66,9 +66,9 @@ export async function loadProducts() {
 
     renderProducts("productList", filterProducts);
 
-    proCategoryList.addEventListener("change", (event) => {
+    proCategoryList.addEventListener("change", async (event) => {
       selectedCategory = event.target.value;
-      renderProducts("productList", filterProducts);
+      await renderProducts("productList", filterProducts);
       // if (event.target.value === "All" && selectedPriceRange === "All") {
       //   renderProducts("productList", (product) => product);
       // } else {
@@ -79,11 +79,11 @@ export async function loadProducts() {
       // }
     });
 
-    priceRangeList.addEventListener("change", (event) => {
+    priceRangeList.addEventListener("change", async (event) => {
       selectedPriceRange = event.target.value;
-      renderProducts("productList", filterProducts);
+      await renderProducts("productList", filterProducts);
     });
-    resetFilters.addEventListener("click", () => {
+    resetFilters.addEventListener("click", async () => {
       selectedCategory = "All";
       selectedPriceRange = "All";
       proCategoryList.querySelector(
@@ -92,7 +92,7 @@ export async function loadProducts() {
       priceRangeList.querySelector(
         "input[type='radio'][value='All']"
       ).checked = true;
-      renderProducts("productList", (product) => product);
+      await renderProducts("productList", (product) => product);
     });
   } catch (error) {
     console.error("Error loading products:", error);

@@ -1,14 +1,26 @@
-import products from "../api/available-products.json";
+// Dynamic import for products data
+let products = [];
+
+async function loadProducts() {
+  if (products.length === 0) {
+    const response = await fetch("./api/available-products.json");
+    products = await response.json();
+  }
+  return products;
+}
 import { updateCartCount, updateWishlistCount } from "../common";
 // import { addToCartFn } from "./product-details";
 
-export function renderProducts(containerId, filterfn) {
+export async function renderProducts(containerId, filterfn) {
   const container = document.getElementById(containerId);
   const productTem = document.getElementById("productTemplate");
 
   // Clear old items
   container.innerHTML = "";
-  const filteredProducts = products.filter(filterfn);
+  
+  // Load products data
+  const productsData = await loadProducts();
+  const filteredProducts = productsData.filter(filterfn);
 
   if (filteredProducts.length === 0) {
     container.innerHTML = `<h2 class="noProductFound">Sorry, no product is found at this range and category</h2>`;
@@ -194,7 +206,7 @@ function attachProductEventListeners(containerId) {
   const container = document.getElementById(containerId);
   
   // Use event delegation for better performance and to handle cloned elements
-  container.addEventListener('click', function(e) {
+  container.addEventListener('click', async function(e) {
     e.stopPropagation();
     
     const productCard = e.target.closest('.item');
@@ -220,23 +232,24 @@ function attachProductEventListeners(containerId) {
     // Handle wishlist clicks
     if (e.target.closest('#addWishList')) {
       e.preventDefault();
-      handleWishlistClick(productId);
+      await handleWishlistClick(productId);
       return;
     }
     
     // Handle add to cart clicks
     if (e.target.closest('#addToCartBtn')) {
       e.preventDefault();
-      handleAddToCartClick(productId);
+      await handleAddToCartClick(productId);
       return;
     }
   });
 }
 
 // Helper function for wishlist functionality
-function handleWishlistClick(productId) {
+async function handleWishlistClick(productId) {
   // Find the product data
-  const product = products.find(p => p.id == productId);
+  const productsData = await loadProducts();
+  const product = productsData.find(p => p.id == productId);
   if (!product) return;
   
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -274,9 +287,10 @@ function handleWishlistClick(productId) {
 }
 
 // Helper function for add to cart functionality
-function handleAddToCartClick(productId) {
+async function handleAddToCartClick(productId) {
   // Find the product data
-  const product = products.find(p => p.id == productId);
+  const productsData = await loadProducts();
+  const product = productsData.find(p => p.id == productId);
   if (!product) return;
   
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
