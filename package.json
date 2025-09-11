@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node build-github.js",
+    "build:vite": "vite build",
+    "preview": "vite preview",
+    "serve": "python -m http.server 8000 --directory dist"
   },
   "devDependencies": {
     "vite": "^7.1.0"
